@@ -8,7 +8,7 @@ public class Hello {
         System.out.println("40 + 2= " + plus(40,2));
     }
 
-    private static int plus(int num1, int num2){
+    public static int plus(int num1, int num2){
         return num1 + num2;
     }
 }
