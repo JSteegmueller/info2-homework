@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bad11e5e-9f14-4d0a-9783-c1589275f4e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Series.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Series.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Imprecision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task-3/main.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.zip" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Series.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="1290">
               <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/Imprecision.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="25" column="177" selection-start-line="25" selection-start-column="177" selection-end-line="25" selection-end-column="177" />
             </state>
           </provider>
         </entry>
@@ -54,6 +65,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/schleifen/Series.java" />
         <option value="$PROJECT_DIR$/src/main/Series.java" />
+        <option value="$PROJECT_DIR$/src/main/Imprecision.java" />
       </list>
     </option>
   </component>
@@ -84,6 +96,12 @@
               <item name="task-3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="task-3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -111,7 +129,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Imprecision">
+    <configuration name="Imprecision" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Imprecision" />
+      <module name="task-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Series" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Series" />
       <module name="task-3" />
@@ -125,6 +150,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Series" />
+      <item itemvalue="Application.Imprecision" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -137,12 +166,12 @@
       <option name="presentableId" value="Default" />
       <updated>1556690666549</updated>
       <workItem from="1556690670539" duration="7000" />
-      <workItem from="1556690712863" duration="12331000" />
+      <workItem from="1556690712863" duration="13373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12338000" />
+    <option name="totallyTimeSpent" value="13380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -158,8 +187,8 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3987952" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3987952" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -194,8 +223,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/Series.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="1290">
           <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Imprecision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="25" column="177" selection-start-line="25" selection-start-column="177" selection-end-line="25" selection-end-column="177" />
         </state>
       </provider>
     </entry>
