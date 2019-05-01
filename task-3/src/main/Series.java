@@ -6,7 +6,9 @@ public class Series {
     public static int sum_up() {
         int result = 0;
 
-        while(result < 100) result++;
+        for (int i = 1 ; i <= 1000; i++){
+            result = result + i;
+        }
 
         return result;
     }
@@ -16,7 +18,7 @@ public class Series {
     public static void multiplication_table(int n) {
         int j = 1;
         while(j <= 10){
-            System.out.println(j*n);
+            System.out.println(j + " x " + n + " = " + j*n);
             j++;
         }
         System.out.println();
@@ -39,8 +41,8 @@ public class Series {
     // Exercise Task
     // 2.1 d)
     public static void chess_board(int n) {
-        for (int i = 1 ; i <= 4 ; i++ ){
-            for (int j = 1 ; j <= 4 ; j++){
+        for (int i = 1 ; i <= n ; i++ ){
+            for (int j = 1 ; j <= n ; j++){
                 System.out.print((i % 2 == 0)? "-#" : "#-");
             }
             System.out.println();
@@ -61,7 +63,7 @@ public class Series {
     // 2.1 f)
     public static double ln2(int n) {
         double result = 0;
-        for (int i = 1 ; i <= 100000 ; i++){
+        for (int i = 1 ; i <= n ; i++){
             result = result + (Math.pow(-1, i+1)/i);
         }
         return result;
@@ -71,7 +73,7 @@ public class Series {
     // 2.1 g)
     public static void reverse_digits(int n) {
         while (n > 0){
-            System.out.print(n%10);
+            System.out.println(n%10);
             n = n / 10;
         }
         System.out.println();
@@ -82,7 +84,7 @@ public class Series {
     public static double leibniz_series(int n) {
         double res = 0;
 
-        for (int i = 0 ; i < Math.pow(10,6) ; i++){
+        for (int i = 0 ; i < n ; i++){
             res += (Math.pow(-1,i) / (2*i+1) );
         }
 
@@ -105,7 +107,8 @@ public class Series {
     // 2.1 j)
     public static long max_collatz(long m) {
         long max_startwert = 1;
-        for (int i = 1 ; i < m ; i++ ){
+        int max_steps = 0;
+        for (int i = 1 ; i <= m ; i++ ){
             double an = i;
             int count = 0;
             while (an != 1){
@@ -113,7 +116,8 @@ public class Series {
                 else an = 3*an + 1;
                 count++;
             }
-            max_startwert = (count > max_startwert)? i : max_startwert ;
+            max_steps     = (count > max_steps)? count : max_steps;
+            max_startwert = (count >= max_steps)? i : max_startwert ;
         }
         return max_startwert;
     }
@@ -125,12 +129,12 @@ public class Series {
         double x_cur = x0;
         double x_old = x0 + 1;
         int i = 1;
-        while (Math.abs(x_cur - x_old) > Math.pow(10,-7) && !(i > 10000) ){
+        while (Math.abs(x_cur - x_old) > Math.pow(10,-7) && !(i > 1000) ){
             x_old = x_cur;
             x_cur = x_old - (0.001 * (2*(x_old - a)));
             i++;
         }
-        return Math.pow((x_cur - a), 2) + b;
+        return x_cur;
     }
 
     // Exercise Task
@@ -139,7 +143,7 @@ public class Series {
         for (int i = 1; i <= num_rows ; i++){
             int j = 0;
             while (j < i){
-                System.out.print(i);
+                System.out.print(i + ",");
                 j++;
             }
             System.out.println();
@@ -152,7 +156,7 @@ public class Series {
         for (int i = 1; i <= num_rows ; i++){
             int j = i;
             while (j > 0){
-                System.out.print(j);
+                System.out.print(j + ",");
                 j--;
             }
             System.out.println();
@@ -191,7 +195,7 @@ public class Series {
     public static boolean is_perfect(int number) {
         int sum = 0;
         for (int i = 1; i < number ; i++){
-            if (6 % i == 0) sum += i;
+            if (number % i == 0) sum += i;
         }
         return sum == number;
     }
@@ -231,7 +235,7 @@ public class Series {
         System.out.println(max_collatz(100));
 
         System.out.println("2.1 k) ");
-        System.out.println(gradient_descent(1, 10, 2));
+        System.out.println(gradient_descent(4, 3, 1));
 
         System.out.println("2.1 l) ");
         pattern_a(5);
