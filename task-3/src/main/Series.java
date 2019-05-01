@@ -1,6 +1,4 @@
-package schleifen;
-
-import java.util.Scanner;
+package main;
 
 public class Series {
     // Exercise Task

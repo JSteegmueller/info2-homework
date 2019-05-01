@@ -102,7 +102,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Series" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="schleifen.Series" />
+      <option name="MAIN_CLASS_NAME" value="main.Series" />
       <module name="task-3" />
       <method v="2">
         <option name="Make" enabled="true" />
