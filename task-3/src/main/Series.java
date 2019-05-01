@@ -18,7 +18,7 @@ public class Series {
     public static void multiplication_table(int n) {
         int j = 1;
         while(j <= 10){
-            System.out.println(j + " x " + n + " = " + j*n);
+            System.out.println(n + " x " + j + " = " + j*n);
             j++;
         }
         System.out.println();
@@ -84,7 +84,7 @@ public class Series {
     public static double leibniz_series(int n) {
         double res = 0;
 
-        for (int i = 0 ; i < n ; i++){
+        for (int i = 0 ; i <= n ; i++){
             res += (Math.pow(-1,i) / (2*i+1) );
         }
 
