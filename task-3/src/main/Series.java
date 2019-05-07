@@ -84,9 +84,8 @@ public class Series {
     public static double leibniz_series(int n) {
         double res = 0;
 
-        for (int i = 0 ; i <= n ; i++){
+        for (int i = 0 ; i <= n ; i++)
             res += (Math.pow(-1,i) / (2*i+1) );
-        }
 
         return res*4;
     }

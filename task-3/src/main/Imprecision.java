@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Imprecision {
     // Exercise Task
+    /** Die Abweichung entsteht durch die Ungenauigkeit beim rechnen mit FKZ wie z.B. floats in Java.
+        Bei kleineren Rechnungen beeinflusst die Ungenauigkeit die Berechnung kaum,
+        bei größeren jedoch skaliert die Ungenauigkeit mit, der "Fehler" wird hierdurch größer. **/
     // 2.2 a)
     public static float different_same_sum(float x){
 
