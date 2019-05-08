@@ -1,0 +1,8 @@
+l = i; 		--> passt
+by = d; 	--> passt nicht, by = (byte)d;
+i = l + 90; 	--> passt nicht, i = (int)l+90;
+a = i; 		--> passt nicht, a = (char)i;
+d = f;		--> passt
+i = d;		--> passt nicht, i = (int)d;
+f = s;		--> passt
+f = i;          --> passt
