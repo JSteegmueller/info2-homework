@@ -5,17 +5,27 @@ import java.util.Scanner;
 public class Array2DExercise {
   // 3.2 a)
   public static void print_array_2d(int[] array) {
-    // TODO fill me
-
+    int size = (int)Math.sqrt(array.length);
+    for(int i = 0 ; i < array.length ; i++)
+      System.out.print((i%size == 0)?"\n"+array[i]:array[i]);
   }
 
 
   // 3.2 b)
   public static int[] walk(int[] labyrinth) {
-
-    // TODO fill me
     // you should change the labyrinth variable
-
+    int size = (int)Math.sqrt(labyrinth.length), moved = 0;
+    int i = 0;
+    boolean end = false;
+    while(true){
+      if(labyrinth[i] != 8){
+        labyrinth[i] = 1;
+        i++;
+        if(i%size==0) break;
+      } else {
+        i = i+size-1;
+      }
+    }
     return labyrinth;
   }
 
