@@ -1,0 +1,5 @@
+a) Laufzeitfehler, Index out of bound 3
+b) Laufzeitfehler, Index out of bound 5 bzw. falls nicht falsch getecht Compilerfehler bei 5
+   da `` anstatt ''
+c) Laufzeitfehler, Index out of bounds da { } vergessen bei for 4, fehler bei 6
+d) Compilerfehler, double->float ohne cast 2, 5
