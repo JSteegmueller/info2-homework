@@ -73,16 +73,21 @@ public class Array1DExercise {
   public static void shift_by_one_to_right(int[] array) {
     // shift array to right. Any change here will affect the parameter "array"
     // {0, 1, 2, 3, 4, 5, 6} --> {6, 0, 1, 2, 3, 4, 5}
+    int safe = array[array.length-1];
+    for(int i = array.length - 1 ; i >0 ; i--)
+      array[i] = array[i-1];
+    array[0] = safe;
   }
 
    // 3.2 g)
   public static void shift_by_one_to_left(int[] array) {
     // shift array to left. Any change here will affect the parameter "array"
     // {0, 1, 2, 3, 4, 5, 6} --> {1, 2, 3, 4, 5, 6, 0}
-
-    // TODO: fill me
-
-  }
+    int safe = array[0];
+    for(int i = 0 ; i < (array.length - 1) ; i++)
+      array[i] = array[i+1];
+    array[array.length-1] = safe;
+}
 
 
 
@@ -90,8 +95,13 @@ public class Array1DExercise {
   // 3.2 h)
   public static void shift_by_n_to_right(int[] array, int n) {
     // {0, 1, 2, 3, 4, 5, 6} (n=2) --> {5, 6, 0, 1, 2, 3, 4}
-
-    // TODO: fill me
+    for(int i = 0; i < n ; i++){
+      int safe = array[array.length-1];
+      for(int j = array.length - 1 ; j >0 ; j--){
+        array[j] = array[j-1];
+      }
+      array[0] = safe;
+    }
   }
 
 
@@ -99,12 +109,11 @@ public class Array1DExercise {
   // 3.2 i)
   public static int[] concat_arrays(int[] array1, int[] array2) {
     // {0, 1, 2, 3}, {4, 5, 6} -> {0, 1, 2, 3, 4, 5, 6}
-    // TODO: fill change me
-    int combined_length = 0;
+    int length1 = array1.length;
+    int combined_length = length1 + array2.length;
     int[] merged = new int[combined_length];
-
-    // TODO: fill me
-
+    for (int i = 0 ; i < merged.length ; i++)
+      merged[i] = (length1-1 >= i)? array1[i]:array2[i-length1];
     return merged;
   }
 
@@ -112,12 +121,18 @@ public class Array1DExercise {
   // 3.2 j)
   public static int[] interleave_arrays(int[] array1, int[] array2) {
     // {0, 1, 2, 3}, {4, 5, 6, 7} -> {0, 4, 1, 5, 2, 6, 3, 7}
-    // TODO: fill change me
-    int combined_length = 0;
+    int combined_length = array1.length + array2.length;
     int[] result = new int[combined_length];
-
-    // TODO: fill me
-
+    int ind1 = 0, ind2 = 0;
+    for (int i = 0; i < combined_length; i++){
+      if (i % 2 == 0) {
+        result[i] = array1[ind1];
+        ind1++;
+      } else {
+        result[i] = array2[ind2];
+        ind2++;
+      }
+    }
     return result;
   }
 
@@ -125,29 +140,60 @@ public class Array1DExercise {
   // 3.2 k)
   public static int[] evenodd(int[] array) {
     // {3, 2, 1, 4} --> {2, 4, 3, 1}
-    int[] result = new int[array.length];
-
-    // TODO: fill me
-
+    int arlen = array.length;
+    int resIndex = 0;
+    int[] result = new int[arlen];
+    for(int i = 0 ; i < arlen ; i++){
+      int num = array[i];
+      if(num%2 == 0){
+        result[resIndex] = num;
+        array[i] = 0;
+        resIndex++;
+      }
+    }
+    for (int i:
+         array) {
+      if(i != 0){
+        result[resIndex] = i;
+        resIndex++;
+      }
+    }
     return result;
   }
 
   // 3.2 l)
   public static int[] histogram_int(int[] data, int num_bins, int bin_width) {
     int[] hist = new int[num_bins];
-
-    // TODO: fill me
-
+    int curr_width = 0;
+    for (int i = 0 ; i < data.length ; i++){
+      for (int j = 0 ; j < hist.length ; j++) {
+        if (data[i] < curr_width+bin_width && data[i] >= curr_width){
+          hist[j]++;
+        }
+        curr_width += bin_width;
+      }
+      curr_width = 0;
+    }
     return hist;
   }
 
 
   // 3.2 m)
   public static double second_smallest(double[] array) {
-    double second_smallest = 0;
-
-    // TODO: fill me
-
+    double second_smallest = Double.POSITIVE_INFINITY;
+    double smallest = Double.POSITIVE_INFINITY;
+    int smallest_idx = 0;
+    for (int i = 0 ; i < array.length ; i++){
+      if (array[i] <= smallest){
+        smallest_idx = i;
+        smallest = array[i];
+      }
+    }
+    array[smallest_idx] = Double.POSITIVE_INFINITY;
+    for (double d:
+         array) {
+      if (d <= second_smallest) second_smallest = d;
+    }
     return second_smallest;
   }
 
