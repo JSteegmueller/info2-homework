@@ -14,17 +14,15 @@ public class Array2DExercise {
   // 3.2 b)
   public static int[] walk(int[] labyrinth) {
     // you should change the labyrinth variable
-    int size = (int)Math.sqrt(labyrinth.length), moved = 0;
+    int size = (int)Math.sqrt(labyrinth.length);
     int i = 0;
-    boolean end = false;
     while(true){
       if(labyrinth[i] != 8){
         labyrinth[i] = 1;
         i++;
         if(i%size==0) break;
-      } else {
+      } else
         i = i+size-1;
-      }
     }
     return labyrinth;
   }
