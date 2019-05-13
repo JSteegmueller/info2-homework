@@ -16,13 +16,22 @@ public class Array2DExercise {
     // you should change the labyrinth variable
     int size = (int)Math.sqrt(labyrinth.length);
     int i = 0;
+    boolean right = true;
     while(true){
-      if(labyrinth[i] != 8){
-        labyrinth[i] = 1;
-        i++;
-        if(i%size==0) break;
-      } else
-        i = i+size-1;
+      if(labyrinth[i] == 8){
+        if(right) i--;
+        else i = i-size;
+        right = !right;
+        continue;
+      }
+      labyrinth[i] = 1;
+        if(right){
+          i++;
+          if(i%size==0) break;
+        } else {
+          i = i+size;
+          if(i >= (Math.pow(size,2))) break;
+        }
     }
     return labyrinth;
   }
