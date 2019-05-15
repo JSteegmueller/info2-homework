@@ -6,7 +6,7 @@ public class BlackJack {
 
   public static void main(String[] args){
 
-
+    System.out.println(updateMoney(0,1,"player"));
     //Das Spiel soll mit dem Aufruf der Funktion startGame(int startMoney) gestartet werden.
     startGame(1000);
 
@@ -31,9 +31,11 @@ public class BlackJack {
 
       while (true) {
         bet = in.nextInt();
-        if (validBetPlayer(currentBalance, bet)) break;
+        if (validBetPlayer(currentBalance, bet) == 1) break;
         System.out.println("Ungültige Eingabe!");
       }
+
+      currentBalance = currentBalance - bet;
 
       System.out.println("Spieler: ");
 
@@ -49,7 +51,7 @@ public class BlackJack {
           break;
         }
       }
-      
+
       System.out.println("Bank: ");
 
       while (cardValueBank <= 17 && bankNeedsToPlay && oneMoreCard()) {
@@ -76,7 +78,7 @@ public class BlackJack {
   }
 
 
-  private static String evaluateWinner(int cardValuePlayer, int cardValueBank) {
+  public static String evaluateWinner(int cardValuePlayer, int cardValueBank) {
     if (cardValueBank == 0 && cardValuePlayer == 21) return "player";
     else if (cardValueBank == 0 && cardValuePlayer > 21) return "bank";
     else if (cardValueBank > 21) return "player";
@@ -84,20 +86,20 @@ public class BlackJack {
     else return (cardValueBank > cardValuePlayer)? "bank" : "player";
   }
 
-  private static int updateMoney(int currentBalance, int bet, String winner) {
-    if (winner.equals("both")) return currentBalance;
-    else return (winner.equals("player"))?currentBalance + bet : currentBalance - bet ;
+  public static int updateMoney(int currentBalance, int bet, String winner) {
+    if (winner.equals("both")) return currentBalance + bet;
+    else return (winner.equals("player"))?currentBalance + 2*bet : (currentBalance - bet < 0 )? 0 : currentBalance - bet ;
   }
 
-  private static boolean validBetPlayer(int currentBalance, int bet){
-    return (bet <= currentBalance && bet > 0);
+  public static int validBetPlayer(int currentBalance, int bet){
+    return (bet <= currentBalance && bet > 0)? 1 : -1 ;
   }
 
-  private static int giveCard(){
+  public static int giveCard(){
     return ThreadLocalRandom.current().nextInt(1,12);
   }
 
-  private static boolean oneMoreCard(){
+  public static boolean oneMoreCard(){
     Scanner s = new Scanner(System.in);
 
     System.out.println("Ne Karte? :3");
