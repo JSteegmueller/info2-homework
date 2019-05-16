@@ -16,15 +16,15 @@ public class BlackJack {
     System.out.println("Welcome to BlackJack");
 
     int currentBalance = startMoney;
+    String winner;
+    Scanner in = new Scanner(System.in);
+    int bet;
 
     while (true) {
 
       int cardValuePlayer = 0;
       int cardValueBank = 0;
       boolean bankNeedsToPlay = true;
-      String winner;
-      Scanner in = new Scanner(System.in);
-      int bet;
 
       System.out.println(currentBalance + " ham mer :D");
       System.out.println("Wie viel hau ma aufn Putz?");
@@ -54,9 +54,8 @@ public class BlackJack {
 
       System.out.println("Bank: ");
 
-      while (cardValueBank <= 17 && bankNeedsToPlay && oneMoreCard()) {
+      while (cardValueBank <= 17 && bankNeedsToPlay) {
         cardValueBank += giveCard();
-        System.out.println("Aktueller Kartenwert: " + cardValueBank);
 
         if (cardValueBank > 21) {
           break;
@@ -88,7 +87,7 @@ public class BlackJack {
 
   public static int updateMoney(int currentBalance, int bet, String winner) {
     if (winner.equals("both")) return currentBalance + bet;
-    else return (winner.equals("player"))?currentBalance + 2*bet : (currentBalance - bet < 0 )? 0 : currentBalance - bet ;
+    else return (winner.equals("player"))?currentBalance + 2*bet : currentBalance;
   }
 
   public static int validBetPlayer(int currentBalance, int bet){
