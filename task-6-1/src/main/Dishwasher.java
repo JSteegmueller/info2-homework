@@ -1,4 +1,4 @@
-package dishwish;
+package main;
 
 public class Dishwasher {
 

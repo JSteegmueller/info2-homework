@@ -1,4 +1,4 @@
-package dishwish;
+package main;
 
 /**
  * Ja also das hier ist halt die Klasse wie sie in der Aufgabe beschrieben ist,
