@@ -38,8 +38,10 @@ public class MealPlan {
 
         for (int i = 0; i < vegetables.length; i++) {
             // TODO 5.1 i) Cook the vegetable until it is edible
-            while (!vegetables[i].isEdible())
+            while (!vegetables[i].isEdible()) {
                 vegetables[i].cookIt();
+
+            }
             meal.addVegetable(vegetables[i], weights[i]);
         }
 

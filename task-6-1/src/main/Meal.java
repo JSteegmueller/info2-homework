@@ -43,8 +43,9 @@ public class Meal {
         // TODO 5.1 a) Remove this comment after creating the attribute kcalSum.
         System.out.println("Your meal has: " + kcalSum + "kcal.");
         // TODO 5.1 j) Print a list of ingredients.
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++) {
             System.out.println(amounts[i] + "g of " + ingredients[i]);
+        }
     }
 
 }

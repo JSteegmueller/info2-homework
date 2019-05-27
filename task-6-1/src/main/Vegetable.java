@@ -20,7 +20,7 @@ public class Vegetable {
         return edible;
     }
 
-    public void cookIt(){
+    public void cookIt() {
         cooked++;
         if (cooked >= cookingMinutes) edible = true;
     }
