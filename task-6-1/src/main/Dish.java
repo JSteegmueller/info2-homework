@@ -27,7 +27,7 @@ public class Dish {
         }
     }
 
-    private void determineSize(String name) {
+    public void determineSize(String name) {
         if (name.equals("Cutlery")) {
             size = 1;
         } else if (name.equals("Plate")) {
