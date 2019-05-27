@@ -18,7 +18,7 @@ public class Dish {
 
     public Dish(String name, float dirty) {
         this.name = name;
-        determineSize(name);
+        determineSize();
 
         if (dirty >= 0 && dirty <= 1) {
             this.dirty = dirty;
@@ -27,7 +27,7 @@ public class Dish {
         }
     }
 
-    public void determineSize(String name) {
+    public void determineSize() {
         if (name.equals("Cutlery")) {
             size = 1;
         } else if (name.equals("Plate")) {
