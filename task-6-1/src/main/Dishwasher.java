@@ -3,13 +3,13 @@ package main;
 public class Dishwasher {
 
     private static Dish[] dishes;
-    private static Dish[] inMachine;
+    private static Dish[] myDishwasher;
     private static final int maxCapacity = 20;
     private static int capacity;
 
     public static void main(String[] args) {
         dishes = new Dish[10];
-        inMachine = new Dish[10];
+        myDishwasher = new Dish[10];
         capacity = 0;
 
         dishes[0] = new Dish("Cutlery", 0.1f);
@@ -24,15 +24,21 @@ public class Dishwasher {
         dishes[9] = new Dish("Plate", 0.4f);
 
         int idx = 0;
-        while (idx < dishes.length && capacity + dishes[idx].getSize() <= maxCapacity) {
-            inMachine[idx] = dishes[idx];
+        int idxMyDiashwasher = 0; 
+        while (idx < dishes.length) {
+            if (capacity + dishes[idx].getSize() > maxCapacity){
+                idx++;
+                continue;
+            }
+            myDishwasher[idxMyDiashwasher] = dishes[idx];
             capacity += dishes[idx].getSize();
             idx++;
+            idxMyDiashwasher++;
         }
 
-        for (int i = 0 ; i < idx ; i++){
-            inMachine[i].clean(0.3f);
-            inMachine[i].printStatus();
+        for (int i = 0 ; i < idxMyDiashwasher ; i++){
+            myDishwasher[i].clean(0.3f);
+            myDishwasher[i].printStatus();
         }
     }
 }
