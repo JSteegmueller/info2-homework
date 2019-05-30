@@ -24,7 +24,7 @@ public class Dishwasher {
         dishes[9] = new Dish("Plate", 0.4f);
 
         int idx = 0;
-        int idxMyDiashwasher = 0; 
+        int idxMyDiashwasher = 0;
         while (idx < dishes.length) {
             if (capacity + dishes[idx].getSize() > maxCapacity){
                 idx++;
