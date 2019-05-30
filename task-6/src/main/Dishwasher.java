@@ -1,4 +1,4 @@
-/*package main;
+package main;
 
 public class Dishwasher {
 
@@ -39,4 +39,4 @@ public class Dishwasher {
 			dishes[i].printStatus();
 		}
 	}
-}*/
+}
