@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -16,10 +15,13 @@ public class Food extends LinkEntity {
         value = 1 + ThreadLocalRandom.current().nextInt(SnakeGame.maxFoodValue);
         if (value < SnakeGame.maxFoodValue * 0.8) {
             col = SnakeGame.foodBasic;
+            imagePath = "./textures/foodMouse.png";
         } else if (value == SnakeGame.maxFoodValue) {
             col = SnakeGame.foodSuper;
+            imagePath = "./textures/foodPizza.png";
         } else {
             col = SnakeGame.foodUltra;
+            imagePath = "./textures/foodElephant.png";
         }
     }
 

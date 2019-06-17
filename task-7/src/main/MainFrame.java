@@ -1,12 +1,7 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * The main game frame hosts the SnakeGame

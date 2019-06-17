@@ -1,7 +1,6 @@
 package main;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * The snake has two constructors, the first one (public) is for the head only,
@@ -19,6 +18,8 @@ public class Snake extends LinkEntity {
     public Snake(int _x, int _y, int _lives, int _startLength) {
         super(new Vector(_x, _y), SnakeGame.snakeHead);
 
+        imagePath = "./textures/snakeHeadUp.png";
+
         alive = true;
         lives = _lives;
         wait = 0;
@@ -31,6 +32,9 @@ public class Snake extends LinkEntity {
     private Snake(Vector _pos, Vector _dir, int n) {
         super(_pos, SnakeGame.snakeBody);
         pos = new Vector(_pos.x, _pos.y);
+
+        int num = ThreadLocalRandom.current().nextInt(4);
+        imagePath = "./textures/snakeBody" + num + ".png";
 
         alive = true;
         wait = n;

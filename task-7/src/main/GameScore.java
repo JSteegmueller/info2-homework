@@ -1,9 +1,6 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.*;
 
 /**
  * A class to handle labels, goals, scores itself and a method to draw them.

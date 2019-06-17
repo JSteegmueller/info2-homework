@@ -1,21 +1,9 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.concurrent.ThreadLocalRandom;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  * The SnakeGame implements the actual control structures to run the game loop
@@ -314,18 +302,22 @@ public class SnakeGame implements ActionListener, MouseListener {
                 case 0: // Up
                     newDirection.x = 0;
                     newDirection.y = -1;
+                    snake.setImagePath("./textures/snakeHeadUp.png");
                     break;
                 case 1: // Left
                     newDirection.x = 1;
                     newDirection.y = 0;
+                    snake.setImagePath("./textures/snakeHeadRight.png");
                     break;
                 case 2: // Down
                     newDirection.x = 0;
                     newDirection.y = 1;
+                    snake.setImagePath("./textures/snakeHeadDown.png");
                     break;
                 case 3: // Right
                     newDirection.x = -1;
                     newDirection.y = 0;
+                    snake.setImagePath("./textures/snakeHeadLeft.png");
                     break;
             }
             snake.changeDirection(newDirection);
