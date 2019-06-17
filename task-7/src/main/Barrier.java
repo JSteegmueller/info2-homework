@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * The barrier surrounds the game area and spawns new elements of increasing
@@ -34,7 +35,14 @@ public class Barrier {
         }
 
         // TODO: spawn barriers randomly on unoccupied terrain
-
+        int x,y;
+        for (int i = 0 ; i <= level ; i++){
+            do {
+                x = ThreadLocalRandom.current().nextInt(borderArea.width -1);
+                y = ThreadLocalRandom.current().nextInt(borderArea.height -1 );
+            } while (this.isOccupied(x,y) || SnakeGame.initialSnakeDir.equals(new Vector(x,y)));
+            extend(x , y);
+        }
     }
 
     private Barrier(int _x, int _y) {
