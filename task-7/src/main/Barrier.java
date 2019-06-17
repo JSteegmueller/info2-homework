@@ -11,17 +11,13 @@ import java.util.concurrent.ThreadLocalRandom;
  * the base block at (-1,-1) and initializes the rest of the field with the
  * other private constructor.
  */
-public class Barrier {
+public class Barrier extends LinkEntity {
 
     private Rectangle borderArea;
-    protected Vector pos;
-    protected Color col;
     private Barrier next;
 
     public Barrier(Rectangle _gameArea, int level) {
-        pos = new Vector(-1, -1);
-        col = SnakeGame.arenaBarrier;
-        next = setNext(this);
+        super(new Vector(-1, -1), SnakeGame.arenaBarrier);
 
         borderArea = new Rectangle(_gameArea.x / MainFrame.tileSize, _gameArea.y / MainFrame.tileSize,
                 _gameArea.width / MainFrame.tileSize, _gameArea.height / MainFrame.tileSize);
@@ -35,39 +31,18 @@ public class Barrier {
         }
 
         // TODO: spawn barriers randomly on unoccupied terrain
-        int x,y;
-        for (int i = 0 ; i <= level ; i++){
+        int x, y;
+        for (int i = 0; i <= level; i++) {
             do {
-                x = ThreadLocalRandom.current().nextInt(borderArea.width -1);
-                y = ThreadLocalRandom.current().nextInt(borderArea.height -1 );
-            } while (this.isOccupied(x,y) || SnakeGame.initialSnakeDir.equals(new Vector(x,y)));
-            extend(x , y);
+                x = ThreadLocalRandom.current().nextInt(borderArea.width - 1);
+                y = ThreadLocalRandom.current().nextInt(borderArea.height - 1);
+            } while (this.isOccupied(x, y) || SnakeGame.initialSnakeDir.equals(new Vector(x, y)));
+            extend(x, y);
         }
     }
 
     private Barrier(int _x, int _y) {
-        pos = new Vector(_x, _y);
-        col = SnakeGame.arenaBarrier;
-        setNext(this);
-    }
-
-    public boolean isOccupied(int x, int y) {
-        if (pos.x == x && pos.y == y) return true;
-        else if (next != this) return next.isOccupied(x, y);
-        return false;
-    }
-
-    public boolean isLast() {
-        return next == this;
-    }
-
-    public Barrier setNext(Barrier _next) {
-        next = _next;
-        return next;
-    }
-
-    public Barrier getNext() {
-        return next;
+        super(new Vector(_x, _y), SnakeGame.arenaBarrier);
     }
 
     public void extend(int _x, int _y) {
@@ -78,13 +53,4 @@ public class Barrier {
             next.extend(_x, _y);
         }
     }
-
-    public void draw(Graphics2D g, Rectangle snakeArea, int tileSize) {
-        g.setColor(col);
-        g.fillRect(snakeArea.x + pos.x * tileSize, snakeArea.y + pos.y * tileSize, tileSize, tileSize);
-        if (!isLast()) {
-            next.draw(g, snakeArea, tileSize);
-        }
-    }
-
 }

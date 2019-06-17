@@ -8,13 +8,11 @@ import java.util.concurrent.ThreadLocalRandom;
  * foods value is determined randomly (with a maximum defined in the game) and
  * defines the color.
  */
-public class Food {
-    private Vector pos;
+public class Food extends LinkEntity {
     private int value;
-    private Color col;
 
     public Food(int x, int y) {
-        pos = new Vector(x, y);
+        super(new Vector(x, y), SnakeGame.foodBasic);
         value = 1 + ThreadLocalRandom.current().nextInt(SnakeGame.maxFoodValue);
         if (value < SnakeGame.maxFoodValue * 0.8) {
             col = SnakeGame.foodBasic;
@@ -25,16 +23,8 @@ public class Food {
         }
     }
 
-    public Vector getPos() {
-        return pos;
-    }
-
     public int getValue() {
         return value;
     }
 
-    public void draw(Graphics2D g, Rectangle snakeArea, int tileSize) {
-        g.setColor(col);
-        g.fillRect(snakeArea.x + pos.x * tileSize, snakeArea.y + pos.y * tileSize, tileSize, tileSize);
-    }
 }

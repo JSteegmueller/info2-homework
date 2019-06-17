@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -10,67 +9,39 @@ import java.awt.Rectangle;
  * eat and extend its length, run into itself and lose length or run into a
  * barrier and die.
  */
-public class Snake {
+public class Snake extends LinkEntity {
 
-    protected Vector pos;
-    protected Color col;
     private boolean alive;
     private int lives;
     private int wait;
     private Vector dir;
-    private Snake next;
 
     public Snake(int _x, int _y, int _lives, int _startLength) {
-        pos = new Vector(_x, _y);
-        setNext(this);
+        super(new Vector(_x, _y), SnakeGame.snakeHead);
 
         alive = true;
         lives = _lives;
         wait = 0;
 
         dir = SnakeGame.initialSnakeDir;
-        col = SnakeGame.snakeHead;
 
         extend(_startLength - 1);
     }
 
     private Snake(Vector _pos, Vector _dir, int n) {
+        super(_pos, SnakeGame.snakeBody);
         pos = new Vector(_pos.x, _pos.y);
-        setNext(this);
 
         alive = true;
         wait = n;
 
         dir = _dir;
-        col = SnakeGame.snakeBody;
     }
 
     public void changeDirection(Vector newDir) {
         Vector tmp = dir;
         dir = newDir;
-        if(!isLast()) next.changeDirection(tmp);
-    }
-
-    public Snake setNext(Snake _next) {
-        next = _next;
-        return next;
-    }
-
-    public Snake getNext() {
-        return next;
-    }
-
-    public int getLength() {
-        if (!isLast()) {
-            return 1 + next.getLength();
-        }
-        return 1;
-    }
-
-    public boolean isOccupied(int x, int y) {
-        if (pos.x == x && pos.y == y) return true;
-        else if (next != this) return next.isOccupied(x, y);
-        return false;
+        if(!isLast()) ((Snake) getNext()).changeDirection(tmp);
     }
 
     public boolean isAlive() {
@@ -82,15 +53,11 @@ public class Snake {
         return lives;
     }
 
-    public boolean isLast() {
-        return next == this;
-    }
-
     private void extend(int n) {
         for (int i = n; i > 0; i--) {
             Snake cur = this;
             while (!cur.isLast()) {
-                cur = cur.next;
+                cur = ((Snake) cur.getNext());
             }
             cur.next = new Snake(pos, dir, getLength());
             cur.next.next = cur.next;
@@ -122,26 +89,19 @@ public class Snake {
             pos.x += dir.x;
             pos.y += dir.y;
         }
-        if(!isLast()) next.move();
+        if(!isLast()) ((Snake) getNext()).move();
     }
 
     private boolean selfCollision(Vector headPos) {
-        Snake curr = this.next;
+        Snake curr = ((Snake) getNext());
         while (!curr.isLast()){
             if (headPos.equals(curr.pos)){
                 curr.next = curr;
                 return true;
             }
-            curr = curr.next;
+            curr = ((Snake) curr.getNext());
         }
         return false;
     }
 
-    public void draw(Graphics2D g, Rectangle snakeArea, int tileSize) {
-        g.setColor(col);
-        g.fillRect(snakeArea.x + pos.x * tileSize, snakeArea.y + pos.y * tileSize, tileSize, tileSize);
-        if (!isLast()) {
-            next.draw(g, snakeArea, tileSize);
-        }
-    }
 }
