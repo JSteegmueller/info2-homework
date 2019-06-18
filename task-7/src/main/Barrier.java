@@ -32,7 +32,7 @@ public class Barrier extends LinkEntity {
 
         // TODO: spawn barriers randomly on unoccupied terrain
         int x, y;
-        for (int i = 0; i <= level; i++) {
+        for (int i = 1; i <= level * SnakeGame.barrierPerLevel; i++) {
             do {
                 x = ThreadLocalRandom.current().nextInt(borderArea.width - 1);
                 y = ThreadLocalRandom.current().nextInt(borderArea.height - 1);
