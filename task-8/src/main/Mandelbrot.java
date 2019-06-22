@@ -11,11 +11,11 @@ public class Mandelbrot {
     public static int mandelbrot(ComplexNumber c, ComplexNumber z, int n, int limit) {
         // TODO 8.2.b) check recursively if c is in the Mandelbrot-Set
         // Return an integer as described in the assignment PDF.
+        n++;
         if (n == limit) return 0;
         z = ComplexNumber.add(ComplexNumber.square(z), c);
         if (z.abs() > 2) return n;
         else {
-            n++;
             return mandelbrot(c,z,n,limit);
         }
     }
