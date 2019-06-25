@@ -12,6 +12,7 @@ public class PythagorasTree {
     public static void drawRotatedRect(Graphics2D g, Vector posP, Vector up, int a, int height) {
         // TODO 8.3.b) Draw a rectangle that is rotated according to the up vector
 
+        // Zugegeben nicht die eleganteste Lösung, aber hey, funktioniert ziemlich gut (zeichne Rect, rotiere Rect, positioniere rect)
         Vector pos = new Vector(posP.x, posP.y);
         double angle = Math.atan2(up.y, up.x) - (2*Math.PI)/4;
         g.setColor(new Color(255 - a, 0, a));
@@ -40,6 +41,7 @@ public class PythagorasTree {
     public static void drawSegment(Graphics2D g, Vector pos, Vector up, int a, int height) {
         // TODO 8.3.c) Compute positions and orientations for the branches
         // continue recursively for every new branch
+        //same here
         drawRotatedRect(g, pos, up, a, height);
 
         Vector newUpL = up.rotated(Math.PI/4);
