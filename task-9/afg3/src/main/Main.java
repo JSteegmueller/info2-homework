@@ -3,7 +3,7 @@ package main;
 public class Main {
 
     public static void main(String[] args) {
-	/* TODO: Examples from the lecture
+	//TODO: Examples from the lecture
 	Graph graph = new Graph(8);
 	graph.setEdgeBidirectional(3, 0, 1); // S <-> a
 	graph.setEdgeBidirectional(1, 0, 3); // s <-> c
@@ -18,7 +18,7 @@ public class Main {
 	graph.setEdgeBidirectional(3, 6, 7); // f <-> T
 
 	System.out.println("graph.shortestDistanceBetween(0, 7) = " + graph.shortestDistanceBetween(0, 7));
-	*/
+
     }
 
 }
