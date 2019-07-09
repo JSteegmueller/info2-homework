@@ -132,7 +132,7 @@ public class Generics {
 		}
 		System.out.print("\n");
 		// result: 
-		// 13, 88, 16, 17, 42, 19, 
+		// 13, 88, 16, 17, 42, 19,
 	}
 
 	private static <T> void printList(List<T> list) {

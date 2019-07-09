@@ -25,7 +25,7 @@ public class GenericList<E> implements List<E> {
     public boolean add(E arg0) {
         if (firstEmptyIdx >= data.length) {
             E[] newData = (E[]) new Object[data.length * 2];
-            for(int i = 0 ; i < firstEmptyIdx ; i++){
+            for (int i = 0; i < firstEmptyIdx; i++) {
                 newData[i] = data[i];
             }
             data = newData;
@@ -80,16 +80,16 @@ public class GenericList<E> implements List<E> {
 
     @Override
     public boolean contains(Object arg0) {
-        for(int i = 0 ; i < firstEmptyIdx ; i++){
-            if(data[i].equals(arg0)) return true;
+        for (int i = 0; i < firstEmptyIdx; i++) {
+            if (data[i].equals(arg0)) return true;
         }
         return false;
     }
 
     @Override
     public boolean containsAll(Collection<?> arg0) {
-        for (Object var:
-             arg0) {
+        for (Object var :
+                arg0) {
             if (!contains(var)) return false;
         }
         return true;
@@ -103,76 +103,135 @@ public class GenericList<E> implements List<E> {
 
     @Override
     public int indexOf(Object arg0) {
-        // TODO
-        return 0;
+        for (int i = 0; i < firstEmptyIdx; i++) {
+            if (arg0.equals(data[i])) return i;
+        }
+        return -1;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO
-        return false;
+        for (int i = 0; i < firstEmptyIdx; i++) {
+            if (data[i] != null) return false;
+        }
+        return true;
     }
 
 
     @Override
     public int lastIndexOf(Object arg0) {
-        // TODO
-        return 0;
+        for (int i = firstEmptyIdx-1; i >= 0; i--) {
+            if (data[i].equals(arg0)) return i;
+        }
+        return -1;
     }
 
 
     @Override
     public boolean remove(Object arg0) {
-        // TODO
+        for (int i = 0; i < firstEmptyIdx; i++) {
+            if (arg0.equals(data[i])) {
+                int firstEmptyIdxCopy = firstEmptyIdx;
+                while (firstEmptyIdxCopy > i) {
+                    if(i+1 >= firstEmptyIdx) data = Arrays.copyOf(data, data.length * 2);
+                    data[i] = data[i + 1];
+                    i++;
+                }
+                firstEmptyIdx--;
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public E remove(int arg0) {
-        // TODO
+        if(indexOutOfBounds(arg0)) throw new IndexOutOfBoundsException("error");
+        for (int i = 0; i < firstEmptyIdx; i++) {
+            if (arg0 == i) {
+                int firstEmptyIdxCopy = firstEmptyIdx;
+                E retVal = data[i];
+                while (firstEmptyIdxCopy > i) {
+                    if(i+1 >= firstEmptyIdx) data = Arrays.copyOf(data, data.length * 2);
+                    data[i] = data[i + 1];
+                    i++;
+                }
+                firstEmptyIdx--;
+                return retVal;
+            }
+        }
         return null;
     }
 
     @Override
     public boolean removeAll(Collection<?> arg0) {
-        // TODO
-        return false;
+        boolean ret = false;
+        for (Object var :
+                arg0) {
+            if(remove(var))
+                ret = true;
+        }
+        return ret;
     }
 
     @Override
     public boolean retainAll(Collection<?> arg0) {
-        // Bonus
-        throw new UnsupportedOperationException();
+        boolean ret = false;
+        for (Object var:
+             arg0) {
+            if(contains(arg0)){
+                continue;
+            }
+            ret = true;
+            while(remove(var));
+        }
+        return ret;
     }
 
     @Override
     public E set(int arg0, E arg1) {
-        // TODO
-        return null;
+        E ret = data[arg0];
+        remove(arg0);
+        add(arg0, arg1);
+        return ret;
     }
 
     @Override
     public int size() {
-        return firstEmptyIdx ;
+        return firstEmptyIdx;
     }
 
     @Override
     public List<E> subList(int arg0, int arg1) {
         // TODO
         // Hint you can use subList method from Array.asList(data)
-        return null;
+        if(indexOutOfBounds(arg0) || indexOutOfBounds(arg1) || arg0 > arg1) throw new IndexOutOfBoundsException("Nanana");
+        return Arrays.asList(data).subList(arg0, arg1);
     }
 
     @Override
     public Object[] toArray() {
-        // TODO
-        return null;
+        return Arrays.copyOf(data, firstEmptyIdx);
     }
 
     @Override
     public <T> T[] toArray(T[] arg0) {
-        // TODO
-        return null;
+        int aktArrayLen = firstEmptyIdx;
+        int paramArrayLen = arg0.length;
+        if (aktArrayLen == paramArrayLen){
+            for (int i = 0 ; i < aktArrayLen ; i++){
+                arg0[i] = (T) data[i];
+            }
+            return arg0;
+        } else if (paramArrayLen < aktArrayLen)
+            return (T[]) Arrays.copyOf(data, aktArrayLen);
+        else {
+            for (int i = 0; i < aktArrayLen; i++) {
+                arg0[i] = (T) data[i];
+            }
+            arg0[aktArrayLen] = null;
+            return arg0;
+        }
     }
 
     ////////////////////// You dont have to touch the following code ///////////////
